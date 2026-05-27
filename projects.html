@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — The Cave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="projects-page fade-in">
+      <header class="projects-header">
+        <h1>Inside the Cave</h1>
+        <a href="index.html" class="back-link">← Surface</a>
+      </header>
+
+      <div class="carousel-wrap">
+        <p class="carousel-hint">Scroll to explore — click a project to open its repo on GitHub</p>
+        <div class="carousel" id="carousel" aria-label="Project carousel"></div>
+        <div class="carousel-nav">
+          <button type="button" id="prev" aria-label="Previous project">←</button>
+          <button type="button" id="next" aria-label="Next project">→</button>
+        </div>
+        <div class="carousel-dots" id="dots" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <script src="js/projects.js"></script>
+    <script>
+      const carousel = document.getElementById("carousel");
+      const dotsContainer = document.getElementById("dots");
+
+      PROJECTS.forEach((project) => {
+        const card = document.createElement("a");
+        card.href = project.github;
+        card.className = "carousel__card";
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
+        card.setAttribute(
+          "aria-label",
+          `${project.title} — view repository on GitHub (opens in new tab)`
+        );
+        card.innerHTML = `
+          <img src="${project.image}" alt="" loading="lazy" />
+          <div class="carousel__card-body">
+            <h2>${project.title}</h2>
+            <p>${project.tagline}</p>
+            <span class="carousel__card-link">View on GitHub ↗</span>
+          </div>
+        `;
+        carousel.appendChild(card);
+
+        const dot = document.createElement("span");
+        dotsContainer.appendChild(dot);
+      });
+
+      const dots = [...dotsContainer.children];
+      const cards = [...carousel.children];
+
+      function updateDots() {
+        const scrollLeft = carousel.scrollLeft;
+        const cardWidth = cards[0]?.offsetWidth ?? 1;
+        const gap = 24;
+        const index = Math.round(scrollLeft / (cardWidth + gap));
+        dots.forEach((d, i) => d.classList.toggle("active", i === index));
+      }
+
+      carousel.addEventListener("scroll", () => {
+        requestAnimationFrame(updateDots);
+      });
+
+      document.getElementById("prev").addEventListener("click", () => {
+        carousel.scrollBy({ left: -carousel.offsetWidth * 0.85, behavior: "smooth" });
+      });
+
+      document.getElementById("next").addEventListener("click", () => {
+        carousel.scrollBy({ left: carousel.offsetWidth * 0.85, behavior: "smooth" });
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") document.getElementById("prev").click();
+        if (e.key === "ArrowRight") document.getElementById("next").click();
+      });
+
+      updateDots();
+    </script>
+  </body>
+</html>

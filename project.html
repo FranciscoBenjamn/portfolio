@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="detail-page">
+      <nav class="detail-nav">
+        <a href="projects.html" class="back-link">← All projects</a>
+        <a href="index.html" class="back-link">Home</a>
+      </nav>
+      <div id="content"></div>
+    </div>
+
+    <script src="js/projects.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const project = id ? getProjectById(id) : null;
+      const content = document.getElementById("content");
+
+      if (!project) {
+        content.innerHTML = `
+          <div class="detail-not-found fade-in">
+            <h1>Project not found</h1>
+            <p><a href="projects.html">Back to the cave</a></p>
+          </div>
+        `;
+        document.title = "Not found — Portfolio";
+      } else {
+        document.title = `${project.title} — Portfolio`;
+        content.innerHTML = `
+          <article class="fade-in">
+            <div class="detail-hero">
+              <img src="${project.image}" alt="${project.title}" />
+            </div>
+            <div class="detail-body">
+              <a
+                href="${project.github}"
+                class="btn-github"
+                target="_blank"
+                rel="noopener noreferrer"
+              >View code on GitHub ↗</a>
+              <h1>${project.title}</h1>
+              <p class="detail-tagline">${project.tagline}</p>
+              <div class="detail-stack">
+                ${project.stack.map((s) => `<span>${s}</span>`).join("")}
+              </div>
+              <section class="detail-section">
+                <h2>What it is</h2>
+                <p>${project.description}</p>
+              </section>
+              <section class="detail-section">
+                <h2>How it was made</h2>
+                <p>${project.howItWasMade}</p>
+              </section>
+            </div>
+          </article>
+        `;
+      }
+    </script>
+  </body>
+</html>

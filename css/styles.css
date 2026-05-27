@@ -1,0 +1,491 @@
+:root {
+  /* Matched to portfoliohome painting */
+  --white: #f5f2ea;
+  --white-soft: #ede9d5;
+  --lavender-pale: #d4c8e4;
+  --lavender: #a89bb8;
+  --lavender-dusty: #9381a8;
+  --purple-mid: #6d5a87;
+  --purple-deep: #4b2a8e;
+  --purple-dark: #3a206e;
+  --purple-ink: #24143f;
+  --cave-red: #c62828;
+  --cave-red-hover: #e53935;
+  --shadow: rgba(36, 20, 63, 0.38);
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: var(--purple-ink);
+  background: var(--lavender-dusty);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+/* —— Home / Cave entrance —— */
+.home {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem 1.5rem 12vh;
+  overflow: hidden;
+}
+
+.home__bg {
+  position: absolute;
+  inset: 0;
+  background: url("../images/portfoliohome.png") center / cover no-repeat;
+  z-index: 0;
+}
+
+.home__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(58, 32, 110, 0.65) 0%,
+    rgba(75, 42, 142, 0.2) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.home__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.home__title {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--white);
+  text-shadow: 0 2px 24px var(--shadow);
+  letter-spacing: 0.02em;
+}
+
+.btn-cave {
+  display: inline-block;
+  padding: 1rem 2.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: var(--cave-red);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow:
+    0 4px 20px rgba(198, 40, 40, 0.45),
+    0 2px 8px var(--shadow);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-cave:hover {
+  background: var(--cave-red-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 28px rgba(198, 40, 40, 0.5),
+    0 4px 12px var(--shadow);
+}
+
+.btn-cave:focus-visible {
+  outline: 3px solid var(--white);
+  outline-offset: 4px;
+}
+
+/* —— Projects carousel —— */
+.projects-page {
+  min-height: 100dvh;
+  background: radial-gradient(
+      ellipse 120% 90% at 50% 25%,
+      var(--white) 0%,
+      var(--white-soft) 22%,
+      var(--lavender-pale) 45%,
+      var(--lavender-dusty) 72%,
+      var(--purple-mid) 100%
+    );
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-header {
+  padding: 1.5rem 1.5rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.projects-header h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--purple-dark);
+}
+
+.projects-page .back-link {
+  color: var(--purple-dark);
+}
+
+.back-link {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+  transition:
+    opacity 0.15s,
+    color 0.15s;
+}
+
+.back-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.carousel-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0 2rem;
+  position: relative;
+}
+
+.carousel-hint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--purple-dark);
+  opacity: 0.75;
+  margin: 0 0 0.75rem;
+}
+
+.carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1.5rem;
+  padding: 1rem 1.5rem 2rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple-deep) transparent;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: var(--purple-deep);
+  border-radius: 3px;
+}
+
+.carousel__card {
+  flex: 0 0 min(85vw, 380px);
+  scroll-snap-align: center;
+  background: var(--white);
+  border: 1px solid var(--lavender-pale);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.carousel__card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 50px var(--shadow);
+}
+
+.carousel__card:focus-visible {
+  outline: 3px solid var(--cave-red);
+  outline-offset: 4px;
+}
+
+.carousel__card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel__card-body {
+  padding: 1.25rem 1.35rem 1.5rem;
+}
+
+.carousel__card-body h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  color: var(--purple-deep);
+}
+
+.carousel__card-body p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--purple-mid);
+  line-height: 1.45;
+}
+
+.carousel__card-link {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--purple-deep);
+  opacity: 0.85;
+}
+
+.carousel__card:hover .carousel__card-link {
+  opacity: 1;
+  color: var(--cave-red);
+}
+
+.btn-github {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--white);
+  background: var(--purple-deep);
+  border-radius: 6px;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.btn-github:hover {
+  background: var(--purple-dark);
+  transform: translateY(-1px);
+}
+
+.btn-github:focus-visible {
+  outline: 3px solid var(--lavender-pale);
+  outline-offset: 3px;
+}
+
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-bottom: 1.5rem;
+}
+
+.carousel-nav button {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--purple-deep);
+  background: var(--white);
+  color: var(--purple-deep);
+  border-radius: 50%;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+}
+
+.carousel-nav button:hover {
+  background: var(--purple-deep);
+  border-color: var(--purple-deep);
+  color: var(--white);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.carousel-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--purple-mid);
+  opacity: 0.55;
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    background 0.2s;
+}
+
+.carousel-dots span.active {
+  opacity: 1;
+  background: var(--purple-deep);
+  border-color: var(--purple-deep);
+  transform: scale(1.2);
+}
+
+/* —— Project detail —— */
+.detail-page {
+  min-height: 100dvh;
+  background: linear-gradient(
+    180deg,
+    var(--lavender-dusty) 0%,
+    var(--purple-mid) 40%,
+    var(--purple-dark) 100%
+  );
+}
+
+.detail-hero {
+  position: relative;
+  height: min(42vh, 320px);
+  overflow: hidden;
+}
+
+.detail-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--lavender-dusty) 0%,
+    transparent 65%
+  );
+}
+
+.detail-body {
+  max-width: 42rem;
+  margin: -3rem auto 0;
+  padding: 2rem 1.75rem 2.5rem;
+  position: relative;
+  z-index: 1;
+  background: var(--white);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -8px 40px var(--shadow);
+}
+
+.detail-body h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  color: var(--purple-deep);
+}
+
+.detail-tagline {
+  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+  color: var(--lavender);
+  font-style: italic;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.detail-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-stack span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.75rem;
+  background: var(--purple-deep);
+  color: var(--white);
+  border-radius: 999px;
+}
+
+.detail-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+  color: var(--purple-deep);
+}
+
+.detail-section p {
+  margin: 0 0 1.5rem;
+  line-height: 1.65;
+  color: var(--purple-ink);
+  opacity: 0.88;
+}
+
+.detail-nav {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-not-found {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  color: var(--white);
+}
+
+.detail-not-found h1 {
+  color: var(--white);
+}
+
+.detail-not-found a {
+  color: var(--white-soft);
+}
+
+/* Fade-in on load */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .home {
+    padding-bottom: 14vh;
+  }
+
+  .carousel__card {
+    flex: 0 0 400px;
+  }
+}
