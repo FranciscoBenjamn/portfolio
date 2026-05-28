@@ -62,7 +62,7 @@
             method="POST"
           >
             <input type="hidden" name="_subject" value="New message from your portfolio" />
-            <input type="hidden" name="_next" value="about.html?sent=1" />
+            <input type="hidden" name="_next" id="form-next" value="" />
             <input type="hidden" name="_captcha" value="false" />
             <input
               type="text"
@@ -95,6 +95,11 @@
     </div>
 
     <script>
+      const formNext = document.getElementById("form-next");
+      if (formNext) {
+        formNext.value = `${window.location.origin}/about?sent=1`;
+      }
+
       if (new URLSearchParams(window.location.search).get("sent") === "1") {
         document.getElementById("contact-success").hidden = false;
         document.querySelector(".contact-form").hidden = true;
