@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — The Cave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="about-page fade-in">
+      <header class="about-header">
+        <a href="index.html" class="back-link about-header__left">Home</a>
+        <h1>About</h1>
+        <a href="projects.html" class="back-link about-header__right">Projects</a>
+      </header>
+
+      <article class="about-body">
+        <p class="about-intro">
+          Hey guys, welcome to the cave! My name is Franklin, and I’m an aspiring front-end developer
+          based in NYC. I’m always trying my hand at learning new skills since the field demands
+          adaptability. My specialties include working with JavaScript frameworks. Whether it’s for
+          a lesson or an opportunity, feel free to reach out to me anytime. I’m currently
+          side-questing in light electrical engineering, but I’m always here.
+        </p>
+
+        <figure class="about-photo">
+          <img
+            src="images/about-photo.png"
+            alt="Franklin standing next to a family member at an event"
+            width="400"
+            height="500"
+            loading="lazy"
+          />
+          <figcaption>(i'm the smaller one unfortunately)</figcaption>
+        </figure>
+
+        <section class="about-skills-section">
+          <h2>Skills</h2>
+          <ul class="about-skills">
+            <li>Javascript (React, Next, Native)</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>C++</li>
+          </ul>
+        </section>
+
+        <section class="contact-section">
+          <h2>Let's get in contact</h2>
+          <p class="contact-note">Send a message and it’ll land in my inbox.</p>
+          <p class="contact-success" id="contact-success" hidden>
+            Thanks — your message was sent. I’ll get back to you soon.
+          </p>
+          <form
+            class="contact-form"
+            action="https://formsubmit.co/franklin.benjamine2@gmail.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New message from your portfolio" />
+            <input type="hidden" name="_next" value="about.html?sent=1" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="text"
+              name="_gotcha"
+              class="contact-form__honeypot"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+
+            <label class="contact-form__field">
+              <span>Name</span>
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+
+            <label class="contact-form__field">
+              <span>Email</span>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+
+            <label class="contact-form__field">
+              <span>Message</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+
+            <button type="submit" class="btn-contact">Send message</button>
+          </form>
+        </section>
+      </article>
+    </div>
+
+    <script>
+      if (new URLSearchParams(window.location.search).get("sent") === "1") {
+        document.getElementById("contact-success").hidden = false;
+        document.querySelector(".contact-form").hidden = true;
+        document.querySelector(".contact-note").hidden = true;
+      }
+    </script>
+  </body>
+</html>

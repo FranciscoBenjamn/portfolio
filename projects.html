@@ -15,17 +15,13 @@
   <body>
     <div class="projects-page fade-in">
       <header class="projects-header">
+        <a href="about.html" class="back-link projects-header__left">About</a>
         <h1>Inside the Cave</h1>
-        <a href="index.html" class="back-link">← Surface</a>
+        <a href="index.html" class="back-link">Surface</a>
       </header>
 
       <div class="carousel-wrap">
-        <p class="carousel-hint">Scroll to explore — click a project to open its repo on GitHub</p>
         <div class="carousel" id="carousel" aria-label="Project carousel"></div>
-        <div class="carousel-nav">
-          <button type="button" id="prev" aria-label="Previous project">←</button>
-          <button type="button" id="next" aria-label="Next project">→</button>
-        </div>
         <div class="carousel-dots" id="dots" aria-hidden="true"></div>
       </div>
     </div>
@@ -72,19 +68,6 @@
 
       carousel.addEventListener("scroll", () => {
         requestAnimationFrame(updateDots);
-      });
-
-      document.getElementById("prev").addEventListener("click", () => {
-        carousel.scrollBy({ left: -carousel.offsetWidth * 0.85, behavior: "smooth" });
-      });
-
-      document.getElementById("next").addEventListener("click", () => {
-        carousel.scrollBy({ left: carousel.offsetWidth * 0.85, behavior: "smooth" });
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") document.getElementById("prev").click();
-        if (e.key === "ArrowRight") document.getElementById("next").click();
       });
 
       updateDots();

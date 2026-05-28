@@ -3,52 +3,52 @@
 /** @type {Project[]} */
 const PROJECTS = [
   {
-    id: "stellar-garden",
-    title: "Stellar Garden",
-    tagline: "Generative night-sky visuals in the browser",
-    github: "https://github.com/franciscobenjamin/stellar-garden",
-    image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&q=80",
+    id: "finance-tracking",
+    title: "Finance Tracking",
+    tagline: "Simple finance tracker built with JS, HTML, and CSS",
+    github: "https://github.com/FranciscoBenjamn/finance-tracking",
+    image: "images/finance-tracking.png",
     description:
-      "An interactive canvas where particles drift like seeds between two hands—users plant constellations with clicks and watch them bloom over time.",
+      "A lightweight personal finance tracker for logging income and expenses, viewing balances, and keeping tabs on spending without a heavy app or sign-up.",
     howItWasMade:
-      "Built with vanilla JavaScript and the Canvas 2D API. Particle positions use simple physics (velocity + damping). Color palettes are sampled from your portfolio artwork so the experience feels cohesive. No frameworks—just requestAnimationFrame and careful tuning of spawn rates.",
-    stack: ["JavaScript", "Canvas API", "CSS"],
+      "Built as a static web app with HTML structure, CSS for layout and styling, and vanilla JavaScript for adding entries, updating totals, and persisting data in the browser. No frameworks—just the core web stack.",
+    stack: ["JavaScript", "HTML", "CSS"],
   },
   {
-    id: "cave-notes",
-    title: "Cave Notes",
-    tagline: "A minimal markdown journal with offline support",
-    github: "https://github.com/franciscobenjamin/cave-notes",
-    image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80",
+    id: "currency-conversion",
+    title: "Currency Converter",
+    tagline: "Simple currency converter built with JavaScript, HTML, and CSS",
+    github: "https://github.com/FranciscoBenjamn/currency-conversion",
+    image: "images/currency-conversion.png",
     description:
-      "A distraction-free writing app that stores notes locally and syncs when you're back online—designed for late-night ideas you don't want to lose.",
+      "A straightforward currency converter—pick a source and target currency, enter an amount, and see the converted result instantly.",
     howItWasMade:
-      "React for the editor UI, IndexedDB via Dexie for persistence, and a small Service Worker for offline caching. Markdown rendering uses a lightweight parser; the sync layer is a thin REST wrapper you can point at any backend.",
-    stack: ["React", "IndexedDB", "PWA"],
+      "Built as a static web app with HTML for structure, CSS for the centered layout and purple accents, and vanilla JavaScript in convert.js to handle dropdowns, amount input, and conversion logic.",
+    stack: ["JavaScript", "HTML", "CSS"],
   },
   {
-    id: "echo-map",
-    title: "Echo Map",
-    tagline: "Audio-reactive map of live venues",
-    github: "https://github.com/franciscobenjamin/echo-map",
-    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80",
+    id: "find-your-scent",
+    title: "Find Your Scent",
+    tagline: "Find your ideal cologne scents for each season",
+    github: "https://github.com/FranciscoBenjamn/find-your-scent",
+    image: "images/find-your-scent.png",
     description:
-      "Explore venues on a map where marker size pulses with recent set-list energy—built for discovering where the crowd is moving tonight.",
+      "A simple app that helps users discover cologne recommendations matched to the season—browse scent profiles and find what fits spring, summer, fall, or winter.",
     howItWasMade:
-      "Mapbox GL JS for the basemap, Web Audio API to analyze preview clips, and a Node/Express API aggregating public event data. Markers scale with a normalized “energy” score computed from tempo and spectral centroid.",
-    stack: ["Mapbox", "Node.js", "Web Audio"],
+      "Built with Create React App: React components for the UI, JavaScript for scent logic and season-based recommendations, and CSS for layout. Structured with a src/ folder and public assets, ready to run locally with npm start.",
+    stack: ["React", "JavaScript", "CSS"],
   },
   {
-    id: "porcelain-api",
-    title: "Porcelain API",
-    tagline: "REST toolkit for small creative teams",
-    github: "https://github.com/franciscobenjamin/porcelain-api",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+    id: "fits-for-free",
+    title: "Fits for Free",
+    tagline: "Connect with models and stylists, find new brands and fashion trends here",
+    github: "https://github.com/FranciscoBenjamn/fits-for-free",
+    image: "images/fits-for-free.png",
     description:
-      "Opinionated CRUD scaffolding with built-in auth hooks and OpenAPI docs—so side projects ship APIs without reinventing middleware every weekend.",
+      "Connect with models and stylists, find new brands and fashion trends here",
     howItWasMade:
-      "TypeScript throughout: Fastify for the server, Zod for request validation, and Prisma for Postgres. OpenAPI specs are generated from the same Zod schemas so docs never drift from behavior.",
-    stack: ["TypeScript", "Fastify", "Prisma"],
+      "Built with HTML, CSS, and JavaScript for layout, styling, and client-side interactivity.",
+    stack: ["JavaScript", "HTML", "CSS"],
   },
 ];
 
