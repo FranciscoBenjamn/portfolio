@@ -42,7 +42,7 @@ const PROJECTS = [
     id: "fits-for-free",
     title: "Fits for Free",
     tagline: "Connect with models and stylists, find new brands and fashion trends here",
-    github: "https://github.com/FranciscoBenjamn/fits-for-free",
+    github: "https://fits.saint-central.xyz/",
     image: "images/fits-for-free.png",
     description:
       "Connect with models and stylists, find new brands and fashion trends here",
