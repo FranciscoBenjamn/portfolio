@@ -573,7 +573,7 @@ h3 {
 }
 
 .carousel__card-link {
-  display: inline-block;
+  display: block;
   margin-top: 0.85rem;
   font-size: 0.8rem;
   font-weight: 600;
@@ -581,6 +581,7 @@ h3 {
   text-transform: uppercase;
   color: var(--purple-deep);
   opacity: 0.85;
+  text-decoration: none;
 }
 
 .carousel__card:hover .carousel__card-link {

@@ -32,21 +32,20 @@
       const dotsContainer = document.getElementById("dots");
 
       PROJECTS.forEach((project) => {
-        const card = document.createElement("a");
-        card.href = project.github;
+        const card = document.createElement("article");
         card.className = "carousel__card";
-        card.target = "_blank";
-        card.rel = "noopener noreferrer";
-        card.setAttribute(
-          "aria-label",
-          `${project.title} — view repository on GitHub (opens in new tab)`
-        );
+        const primaryLink = project.live ?? project.github;
+        const primaryLabel = project.live ? "View ↗" : "View on GitHub ↗";
+        const githubLinkHtml = project.live
+          ? `<a class="carousel__card-link" href="${project.github}" target="_blank" rel="noopener noreferrer" aria-label="${project.title} repository on GitHub (opens in new tab)">View on GitHub ↗</a>`
+          : "";
         card.innerHTML = `
           <img src="${project.image}" alt="" loading="lazy" />
           <div class="carousel__card-body">
             <h2>${project.title}</h2>
             <p>${project.tagline}</p>
-            <span class="carousel__card-link">View on GitHub ↗</span>
+            <a class="carousel__card-link" href="${primaryLink}" target="_blank" rel="noopener noreferrer">${primaryLabel}</a>
+            ${githubLinkHtml}
           </div>
         `;
         carousel.appendChild(card);

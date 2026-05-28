@@ -1,4 +1,4 @@
-/** @typedef {{ id: string, title: string, tagline: string, image: string, github: string, description: string, howItWasMade: string, stack: string[] }} Project */
+/** @typedef {{ id: string, title: string, tagline: string, image: string, github: string, live?: string, description: string, howItWasMade: string, stack: string[] }} Project */
 
 /** @type {Project[]} */
 const PROJECTS = [
@@ -42,7 +42,8 @@ const PROJECTS = [
     id: "fits-for-free",
     title: "Fits for Free",
     tagline: "Connect with models and stylists, find new brands and fashion trends here",
-    github: "https://fits.saint-central.xyz/",
+    live: "https://fits.saint-central.xyz/",
+    github: "https://github.com/FranciscoBenjamn/fits-for-free",
     image: "images/fits-for-free.png",
     description:
       "Connect with models and stylists, find new brands and fashion trends here",
